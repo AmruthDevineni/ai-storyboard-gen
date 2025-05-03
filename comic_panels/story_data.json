@@ -1,0 +1,116 @@
+{
+  "panels": [
+    {
+      "prompt": "Charlie Brown sitting at his desk, looking worried. Papers and books are scattered around him.",
+      "dialogues": [
+        {
+          "character": "Charlie Brown",
+          "text": "I'm so nervous about my math test tomorrow..."
+        },
+        {}
+      ]
+    },
+    {
+      "prompt": "Snoopy sitting on the floor next to Charlie Brown, looking directly at him with a sly grin.",
+      "dialogues": [
+        {
+          "character": "Snoopy",
+          "text": "Don't worry, Charlie Brown. I'll help you study."
+        },
+        {}
+      ]
+    },
+    {
+      "prompt": "Charlie Brown and Snoopy sitting on the floor together, surrounded by math problems and flashcards.",
+      "dialogues": [
+        {
+          "character": "Charlie Brown",
+          "text": "Okay, so what's the formula for..."
+        },
+        {
+          "character": "Snoopy",
+          "text": "Woof woof! It's like a doggy puzzle!"
+        }
+      ]
+    },
+    {
+      "prompt": "Snoopy's head pops up from behind a flashcard, with a goofy expression.",
+      "dialogues": [
+        {
+          "character": "Snoopy",
+          "text": "Ooh, I think I see the answer!"
+        },
+        {}
+      ]
+    },
+    {
+      "prompt": "Charlie Brown looking confused, while Snoopy is enthusiastically explaining something.",
+      "dialogues": [
+        {
+          "character": "Snoopy",
+          "text": "...and then you add 5 and subtract 3..."
+        },
+        {
+          "character": "Charlie Brown",
+          "text": "Wait, what's going on?"
+        }
+      ]
+    },
+    {
+      "prompt": "Charlie Brown's face scrunching up in frustration.",
+      "dialogues": [
+        {
+          "character": "Charlie Brown",
+          "text": "I don't get it..."
+        },
+        {}
+      ]
+    },
+    {
+      "prompt": "Snoopy doing a silly dance, with his ears flapping wildly.",
+      "dialogues": [
+        {
+          "character": "Snoopy",
+          "text": "Don't worry, Charlie Brown! It's all about the doggy vibes!"
+        },
+        {}
+      ]
+    },
+    {
+      "prompt": "Charlie Brown laughing, despite himself.",
+      "dialogues": [
+        {
+          "character": "Charlie Brown",
+          "text": "Ha ha... I think I'm starting to get it."
+        },
+        {}
+      ]
+    },
+    {
+      "prompt": "Snoopy and Charlie Brown high-fiving each other.",
+      "dialogues": [
+        {
+          "character": "Snoopy",
+          "text": "Yay, team!"
+        },
+        {
+          "character": "Charlie Brown",
+          "text": "Thanks, Snoopy. You're the best study buddy!"
+        }
+      ]
+    },
+    {
+      "prompt": "The two friends walking off together, arms around each other's shoulders.",
+      "dialogues": [
+        {
+          "character": "Snoopy",
+          "text": "We make a paw-some team!"
+        },
+        {
+          "character": "Charlie Brown",
+          "text": "Definitely!"
+        }
+      ]
+    }
+  ]
+}
