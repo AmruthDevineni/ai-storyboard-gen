@@ -173,7 +173,3 @@ Authored by:
 - **Rishabh Reddy Suravaram**
 
 ---
-
-## License
-
-MIT License – use freely, cite if helpful.
