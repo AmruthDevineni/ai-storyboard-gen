@@ -1,21 +1,21 @@
-# 🧠🎨 AI-Powered Peanuts Comic Generator
+# AI-Powered Peanuts Comic Generator
 
 This project presents a fully automated pipeline to generate multi-panel Peanuts-style comic strips using a combination of:
 
-- 🤖 LLaMA 3 (via Ollama) for story and dialogue generation  
-- 🎨 A fine-tuned Stable Diffusion model trained on Peanuts comics (via DreamBooth)  
-- 💬 Speech bubble insertion and panel layout  
-- 📊 Visual and narrative evaluation of output comics
+- LLaMA 3 (via Ollama) for story and dialogue generation  
+- A fine-tuned Stable Diffusion model trained on Peanuts comics (via DreamBooth)  
+- Speech bubble insertion and panel layout  
+- Visual and narrative evaluation of output comics
 
-> 🚨 **Note**: The trained Stable Diffusion model is too large to upload to GitHub. You can download it from our shared Google Drive:  
-👉 [Model Folder – Google Drive](https://drive.google.com/drive/folders/1kYDbtPD4-_ixHU4coAJHIEN_w2HkqEXj?usp=drive_link)
+> **Note**: The trained Stable Diffusion model is too large to upload to GitHub. You can download it from our shared Google Drive:  
+[Model Folder – Google Drive](https://drive.google.com/drive/folders/1kYDbtPD4-_ixHU4coAJHIEN_w2HkqEXj?usp=drive_link)
 
 ---
 
 ## 📁 Project Structure
 
 ```
-📦 ai-storyboard-gen/
+ ai-storyboard-gen/
 ├── dreambooth_train_cleaned.py         # Fine-tunes Stable Diffusion on Peanuts-style panels
 ├── gen_with_llm_3.py                   # Main script for end-to-end comic generation
 ├── evaluator.py                        # Panel consistency and quality evaluation
@@ -28,7 +28,7 @@ This project presents a fully automated pipeline to generate multi-panel Peanuts
 
 ---
 
-## 📌 Project Summary
+## Project Summary
 
 This system fuses the semantic power of LLMs with the creative flexibility of diffusion models to generate Peanuts-style comics with minimal input. It handles:
 
@@ -39,7 +39,7 @@ This system fuses the semantic power of LLMs with the creative flexibility of di
 
 ---
 
-## 🧠 Model & Pipeline Overview
+## Model & Pipeline Overview
 
 1. **LLaMA 3**: Decomposes your prompt into a structured JSON of scenes and panel-wise dialogue  
 2. **Stable Diffusion 2.1 (fine-tuned)**: Trained on Peanuts panels (text-free) using `dreambooth_train_cleaned.py`  
@@ -48,9 +48,9 @@ This system fuses the semantic power of LLMs with the creative flexibility of di
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
-### 📥 1. Clone + Setup
+### 1. Clone + Setup
 
 ```bash
 git clone git@github.com:AmruthDevineni/ai-storyboard-gen.git
@@ -60,14 +60,14 @@ pip install -r requirements.txt
 
 ---
 
-### 📦 2. Download the Fine-Tuned Model
+### 2. Download the Fine-Tuned Model
 
 Grab the folder from this Google Drive link and place it in the root directory:  
-👉 [peanuts_finetuned_sd_no_text – Google Drive](https://drive.google.com/drive/folders/1kYDbtPD4-_ixHU4coAJHIEN_w2HkqEXj?usp=drive_link)
+[peanuts_finetuned_sd_no_text – Google Drive](https://drive.google.com/drive/folders/1kYDbtPD4-_ixHU4coAJHIEN_w2HkqEXj?usp=drive_link)
 
 ---
 
-### 🧪 3. Generate a Comic Strip
+### 3. Generate a Comic Strip
 
 ```bash
 python gen_with_llm_3.py \
@@ -84,7 +84,7 @@ This:
 
 ---
 
-### 📊 4. Run Evaluation Separately (Optional)
+### 4. Run Evaluation Separately (Optional)
 
 ```bash
 python evaluator.py \
@@ -96,7 +96,7 @@ python evaluator.py \
 
 ---
 
-## 🧾 Requirements
+## Requirements
 
 ```text
 torch
@@ -117,7 +117,7 @@ pip install torch diffusers transformers pillow opencv-python matplotlib numpy s
 
 ---
 
-## 🧠 LLM Setup
+## LLM Setup
 
 This project uses [Ollama](https://ollama.com) to serve a local instance of LLaMA 3:
 
@@ -127,7 +127,7 @@ ollama run llama3
 
 ---
 
-## 🧪 Evaluation Metrics
+## Evaluation Metrics
 
 - **Narrative Coherence** (LLM output structure & flow)  
 - **Visual Similarity** (SSIM scores between panels)  
@@ -135,12 +135,12 @@ ollama run llama3
 - **User Feedback** (via interactive mode)
 
 Example SSIM result:  
-> ✅ Average SSIM score across panels: **0.75**  
-> 💬 User satisfaction score: **4.6/5**
+> Average SSIM score across panels: **0.75**  
+> User satisfaction score: **4.6/5**
 
 ---
 
-## 📄 Final Report
+## Final Report
 
 You can find our full technical paper (LaTeX format) in this repository or upon request.  
 Authored by:  
@@ -149,7 +149,7 @@ Authored by:
 
 ---
 
-## 📈 Sample Output
+## Sample Output
 
 | Generated Panels | Sample |
 |------------------|--------|
@@ -158,7 +158,7 @@ Authored by:
 
 ---
 
-## 💡 Future Work
+## Future Work
 
 - Multi-style support (Garfield, Calvin & Hobbes, etc.)  
 - Interactive Web UI (Streamlit)  
@@ -167,13 +167,13 @@ Authored by:
 
 ---
 
-## 🧑‍💻 Authors
+## Authors
 
 - **Amruth Devineni** – [GitHub](https://github.com/AmruthDevineni)  
 - **Rishabh Reddy Suravaram**
 
 ---
 
-## 📜 License
+## License
 
 MIT License – use freely, cite if helpful.
