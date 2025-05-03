@@ -150,11 +150,11 @@ Authored by:
 ---
 
 ## Sample Output
-
-| Generated Panels | Sample |
-|------------------|--------|
-| ![](comic_panels/panel_01.png) | "Snoopy builds a rocket..." |
-| ![](comic_panels/panel_02.png) | "Woodstock presses launch" |
+**Charlie's Exam**
+| Generated Panels |
+|------------------|
+| ![](comic_panels/panel_01.png) |
+| ![](comic_panels/panel_02.png) | 
 
 ---
 
