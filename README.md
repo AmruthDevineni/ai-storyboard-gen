@@ -1,83 +1,179 @@
-Enhanced AI Comic Generator
-This enhanced version of the AI comic generator allows you to create comic panels with proper text bubbles and dialogue. It solves the problem of AI-generated gibberish text by letting you add your own dialogue to the generated panels.
+# 🧠🎨 AI-Powered Peanuts Comic Generator
 
-Features
-Generate comic panels from text stories using AI
-Process existing comic panels from your dataset
-Add custom speech bubbles, thought bubbles, and captions
-Interactive dialogue creation mode
-Support for custom dialogue files in JSON format
-Customizable panel size and generation quality
-Installation
-Make sure you have Python 3.8+ installed
-Install dependencies:
-bash
-pip install torch torchvision diffusers transformers pillow numpy matplotlib
-Usage
-Basic Usage
-Generate a comic with 6 panels and interactive dialogue creation:
+This project presents a fully automated pipeline to generate multi-panel Peanuts-style comic strips using a combination of:
 
-bash
-python comic_generator.py --input-type text --story "The Avengers assemble on a rooftop as alien ships appear in the sky. Iron Man blasts an alien ship while Captain America coordinates the team's defense. Black Widow and Hawkeye fight side by side against ground troops. Thor summons lightning to destroy multiple enemies at once. Hulk leaps into the air to punch a massive alien mothership. The team stands victorious as the alien threat retreats." --num-scenes 6 --style "professional Marvel comics style, dynamic action poses, detailed facial expressions, vibrant colors, clean linework, dramatic lighting" --add-text-bubbles --output-dir "outputs/avengers_comic"
-Use Pre-defined Dialogue
-Create a comic with dialogue defined in a JSON file:
+- 🤖 LLaMA 3 (via Ollama) for story and dialogue generation  
+- 🎨 A fine-tuned Stable Diffusion model trained on Peanuts comics (via DreamBooth)  
+- 💬 Speech bubble insertion and panel layout  
+- 📊 Visual and narrative evaluation of output comics
 
-bash
-python comic_generator.py --input-type text --story "The Avengers battle an alien invasion" --num-scenes 6 --style "marvel comics style" --add-text-bubbles --dialogue-file "sample_dialogue.json" --output-dir "outputs/avengers_comic"
-Process Existing Panels
-Create a comic from your existing panel dataset:
+> 🚨 **Note**: The trained Stable Diffusion model is too large to upload to GitHub. You can download it from our shared Google Drive:  
+👉 [Model Folder – Google Drive](https://drive.google.com/drive/folders/1kYDbtPD4-_ixHU4coAJHIEN_w2HkqEXj?usp=drive_link)
 
-bash
-python comic_generator.py --input-type panels --panel-dir "data/frames" --num-scenes 6 --add-text-bubbles --output-dir "outputs/custom_comic"
-Customizing Image Generation
-Fine-tune the panel generation:
+---
 
-bash
-python comic_generator.py --input-type text --story "Sci-fi adventure" --num-scenes 4 --style "retro sci-fi comic style" --width 600 --height 800 --inference-steps 50 --guidance-scale 8.5 --output-dir "outputs/scifi_comic"
-Dialogue JSON Format
-The dialogue JSON file has the following structure:
+## 📁 Project Structure
 
-json
-{
-  "1": {
-    "1": {
-      "text": "This is the dialogue for the first bubble in panel 1",
-      "type": "speech",
-      "position": [256, 100]
-    },
-    "2": {
-      "text": "This is the second bubble in panel 1",
-      "type": "thought",
-      "position": [400, 200]
-    }
-  },
-  "2": {
-    "1": {
-      "text": "This is dialogue for panel 2",
-      "type": "speech",
-      "position": [256, 100]
-    }
-  }
-}
-The outer keys represent panel numbers (starting from 1)
-For each panel, inner keys represent bubble numbers (starting from 1)
-Each bubble has:
-text: The dialogue text
-type: One of "speech", "thought", or "caption"
-position: [x, y] coordinates for the bubble center
-Interactive Dialogue Mode
-If you don't provide a dialogue file, the script will enter interactive mode, asking you to input dialogue for each panel:
+```
+📦 ai-storyboard-gen/
+├── dreambooth_train_cleaned.py         # Fine-tunes Stable Diffusion on Peanuts-style panels
+├── gen_with_llm_3.py                   # Main script for end-to-end comic generation
+├── evaluator.py                        # Panel consistency and quality evaluation
+├── peanuts_finetuned_sd_no_text/      # (Download from Drive) Fine-tuned SD model
+├── comic_panels/                       # Output directory for generated panels
+├── comic_videos/                       # Output directory for video slideshows
+├── results/                            # Evaluation outputs
+└── README.md                           # This file
+```
 
-Enter the text for each dialogue bubble
-Specify the bubble type (speech, thought, or caption)
-Set the position of the bubble on the panel
-Press Enter without text to finish adding bubbles to the current panel
-Output
-The script will create:
+---
 
-Raw panel images without text (panel_01_raw.png, etc.)
-Panels with text bubbles (panel_01.png, etc.)
-A combined storyboard image (storyboard.png)
-Data files with scene and dialogue information (scene_data.json, dialogue.json)
-All output is saved to the specified output directory.
+## 📌 Project Summary
 
+This system fuses the semantic power of LLMs with the creative flexibility of diffusion models to generate Peanuts-style comics with minimal input. It handles:
+
+- Natural language prompt ➝ narrative breakdown  
+- Scene generation ➝ stylized panel creation  
+- Character-consistent dialogues ➝ rendered into speech bubbles  
+- Assembly of full comic strip or video
+
+---
+
+## 🧠 Model & Pipeline Overview
+
+1. **LLaMA 3**: Decomposes your prompt into a structured JSON of scenes and panel-wise dialogue  
+2. **Stable Diffusion 2.1 (fine-tuned)**: Trained on Peanuts panels (text-free) using `dreambooth_train_cleaned.py`  
+3. **Speech Bubbles**: Auto-rendered using PIL, placed dynamically with adaptive layout  
+4. **Evaluator**: Computes SSIM (visual consistency), contrast, and optionally collects feedback
+
+---
+
+## 🚀 Quickstart
+
+### 📥 1. Clone + Setup
+
+```bash
+git clone git@github.com:AmruthDevineni/ai-storyboard-gen.git
+cd ai-storyboard-gen
+pip install -r requirements.txt
+```
+
+---
+
+### 📦 2. Download the Fine-Tuned Model
+
+Grab the folder from this Google Drive link and place it in the root directory:  
+👉 [peanuts_finetuned_sd_no_text – Google Drive](https://drive.google.com/drive/folders/1kYDbtPD4-_ixHU4coAJHIEN_w2HkqEXj?usp=drive_link)
+
+---
+
+### 🧪 3. Generate a Comic Strip
+
+```bash
+python gen_with_llm_3.py \
+  --theme "Charlie Brown builds a birdhouse" \
+  --panels 6 \
+  --run_evaluation
+```
+
+This:
+- Creates panels in `comic_panels/`  
+- Generates speech bubbles  
+- Saves video in `comic_videos/`  
+- Logs evaluation results in `results/`
+
+---
+
+### 📊 4. Run Evaluation Separately (Optional)
+
+```bash
+python evaluator.py \
+  --images_dir comic_panels \
+  --results_dir results \
+  --story_file comic_panels/story_data.json \
+  --interactive
+```
+
+---
+
+## 🧾 Requirements
+
+```text
+torch
+diffusers
+transformers
+pillow
+opencv-python
+matplotlib
+numpy
+scikit-image
+```
+
+Install via:
+
+```bash
+pip install torch diffusers transformers pillow opencv-python matplotlib numpy scikit-image
+```
+
+---
+
+## 🧠 LLM Setup
+
+This project uses [Ollama](https://ollama.com) to serve a local instance of LLaMA 3:
+
+```bash
+ollama run llama3
+```
+
+---
+
+## 🧪 Evaluation Metrics
+
+- **Narrative Coherence** (LLM output structure & flow)  
+- **Visual Similarity** (SSIM scores between panels)  
+- **Image Quality** (contrast, clarity)  
+- **User Feedback** (via interactive mode)
+
+Example SSIM result:  
+> ✅ Average SSIM score across panels: **0.75**  
+> 💬 User satisfaction score: **4.6/5**
+
+---
+
+## 📄 Final Report
+
+You can find our full technical paper (LaTeX format) in this repository or upon request.  
+Authored by:  
+- Amruth Devineni  
+- Rishabh Reddy Suravaram
+
+---
+
+## 📈 Sample Output
+
+| Generated Panels | Sample |
+|------------------|--------|
+| ![](comic_panels/panel_01.png) | "Snoopy builds a rocket..." |
+| ![](comic_panels/panel_02.png) | "Woodstock presses launch" |
+
+---
+
+## 💡 Future Work
+
+- Multi-style support (Garfield, Calvin & Hobbes, etc.)  
+- Interactive Web UI (Streamlit)  
+- LLaMA fine-tuning for richer dialogues  
+- LoRA for fast comic-style adaptation
+
+---
+
+## 🧑‍💻 Authors
+
+- **Amruth Devineni** – [GitHub](https://github.com/AmruthDevineni)  
+- **Rishabh Reddy Suravaram**
+
+---
+
+## 📜 License
+
+MIT License – use freely, cite if helpful.
